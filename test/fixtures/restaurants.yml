@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+#one:
+#  name: restaurant1
+#  description: description1
+#  street: street1
+#  city: city1
+#  state: MA
+#  zipCode: 02135
+#  phoneNumber: 617-487-5487
+#
+#two:
+#  name: restaurant2
+#  description: description2
+#  street: street2
+#  city: city2
+#  state: MA
+#  zipCode: 02114
+#  phoneNumber: 617-487-5487
+#

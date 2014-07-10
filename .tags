@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ActiveSupport	test/test_helper.rb	/^class ActiveSupport::TestCase$/;"	c
+AddDetailsToRestaurants	db/migrate/20140705105909_add_details_to_restaurants.rb	/^class AddDetailsToRestaurants < ActiveRecord::Migration$/;"	c
+AddPhoneToRestaurants	db/migrate/20140705110022_add_phone_to_restaurants.rb	/^class AddPhoneToRestaurants < ActiveRecord::Migration$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Reservester
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+CreateRestaurants	db/migrate/20140630133148_create_restaurants.rb	/^class CreateRestaurants < ActiveRecord::Migration$/;"	c
+Reservester	config/application.rb	/^module Reservester$/;"	m
+Restaurant	app/models/restaurant.rb	/^class Restaurant < ActiveRecord::Base$/;"	c
+RestaurantTest	test/models/restaurant_test.rb	/^class RestaurantTest < ActiveSupport::TestCase$/;"	c
+RestaurantsController	app/controllers/restaurants_controller.rb	/^class RestaurantsController < ApplicationController$/;"	c
+RestaurantsControllerTest	test/controllers/restaurants_controller_test.rb	/^class RestaurantsControllerTest < ActionController::TestCase$/;"	c
+RestaurantsHelper	app/helpers/restaurants_helper.rb	/^module RestaurantsHelper$/;"	m
+RestaurantsHelperTest	test/helpers/restaurants_helper_test.rb	/^class RestaurantsHelperTest < ActionView::TestCase$/;"	c
+WelcomeController	app/controllers/welcome_controller.rb	/^class WelcomeController < ApplicationController$/;"	c
+WelcomeControllerTest	test/controllers/welcome_controller_test.rb	/^class WelcomeControllerTest < ActionController::TestCase$/;"	c
+WelcomeHelper	app/helpers/welcome_helper.rb	/^module WelcomeHelper$/;"	m
+WelcomeHelperTest	test/helpers/welcome_helper_test.rb	/^class WelcomeHelperTest < ActionView::TestCase$/;"	c
+change	db/migrate/20140630133148_create_restaurants.rb	/^  def change$/;"	f	class:CreateRestaurants
+change	db/migrate/20140705105909_add_details_to_restaurants.rb	/^  def change$/;"	f	class:AddDetailsToRestaurants
+change	db/migrate/20140705110022_add_phone_to_restaurants.rb	/^  def change$/;"	f	class:AddPhoneToRestaurants
+create	app/controllers/restaurants_controller.rb	/^	def create$/;"	f	class:RestaurantsController
+destroy	app/controllers/restaurants_controller.rb	/^	def destroy$/;"	f	class:RestaurantsController
+edit	app/controllers/restaurants_controller.rb	/^	def edit$/;"	f	class:RestaurantsController
+index	app/controllers/restaurants_controller.rb	/^	def index$/;"	f	class:RestaurantsController
+index	app/controllers/welcome_controller.rb	/^  def index$/;"	f	class:WelcomeController
+new	app/controllers/restaurants_controller.rb	/^	def new$/;"	f	class:RestaurantsController
+restaurant_params	app/controllers/restaurants_controller.rb	/^		def restaurant_params$/;"	f	class:RestaurantsController
+show	app/controllers/restaurants_controller.rb	/^	def show$/;"	f	class:RestaurantsController
+update	app/controllers/restaurants_controller.rb	/^	def update$/;"	f	class:RestaurantsController
