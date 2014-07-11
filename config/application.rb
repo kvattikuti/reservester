@@ -1,6 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'dotenv' ; 
+
+Dotenv.load ".env.local", ".env.#{Rails.env}"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -29,6 +32,25 @@ module Reservester
             :controller_specs => true, 
             :request_specs => true 
         g.fixture_replacement :factory_girl, :dir => "spec/factories" 
+
+        if Rails.env.test? or Rails.env.cucumber?
+              CarrierWave.configure do |config|
+                    config.storage = :file
+                    config.enable_processing = false
+              end
+        else
+            CarrierWave.configure do |config|
+                    config.storage = :fog
+                    config.fog_credentials = {
+                    :provider               => 'AWS',                        
+                    :aws_access_key_id      => ENV['S3_SECRET_KEY_ID'],
+                    :aws_secret_access_key  => ENV['S3_SECRET_KEY'],
+                }
+                config.fog_directory  = ENV['S3_BUCKET']
+                config.fog_public     = false
+                config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
+            end
+        end
     end 
   end
 end

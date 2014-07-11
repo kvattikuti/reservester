@@ -8,49 +8,54 @@
       <p class="form-control-static"><%= @restaurant.name %></p>
     </div>
   </div>
-
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @restaurant.description %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Street</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @restaurant.street %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">City</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @restaurant.city %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">State</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @restaurant.state %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Zip Code</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @restaurant.zipCode %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Phone Number</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @restaurant.phoneNumber %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Picture</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= image_tag @restaurant.picture_url(:thumb).to_s if @restaurant.picture? %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-2">
+      <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-default" %>
+    </div>
+    <div class="col-sm-8">
+      <%= link_to 'Back to Restaurant List', restaurants_path, class: "btn btn-default" %>
+    </div>
+  </div>
 </form>
-
-<p>
-  <label></label>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
- 
-<p>
-  <strong>Description:</strong>
-  <%= @restaurant.description %>
-</p>
-
-<p>
-  <strong>Street:</strong>
-  <%= @restaurant.street %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @restaurant.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @restaurant.state %>
-</p>
-
-<p>
-  <strong>Zip Code:</strong>
-  <%= @restaurant.zipCode %>
-</p>
-
-<p>
-  <strong>Phone Number:</strong>
-  <%= @restaurant.phoneNumber %>
-</p>
-<!--
-<%= image_tag(@restaurant.picture_url) if @restaurant.picture? %>
--->
-<%= image_tag @restaurant.picture_url.to_s %>
-
-<br>
-<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-default" %>
-<%= link_to 'Back to Restaurant List', restaurants_path, class: "btn btn-default" %>
