@@ -17,6 +17,17 @@ describe RestaurantsController do
 
 	describe "GET #show" do
 
+		it "should receive find" do
+			restaurant = FactoryGirl.create(:restaurant)
+			Restaurant.should_receive(:find).with(restaurant.id.to_s).and_return(restaurant)
+			get :show, id: restaurant
+		end
+
+		it "should receive find2" do
+			Restaurant.should_receive(:find).with("1")
+			get :show, id: "1"
+		end
+
 		it "assigns the requested restaurant to @restaurant" do
 			restaurant = FactoryGirl.create(:restaurant)
 			get :show, id: restaurant

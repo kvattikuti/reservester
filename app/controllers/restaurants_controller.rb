@@ -9,12 +9,12 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = Restaurant.new(restaurant_params)
+		@restaurant.owner = current_owner
 		if @restaurant.save
 			redirect_to @restaurant
 		else
 			render 'new'
 		end
-		print restaurant_params[:picture]
 	end
 
 	def show
@@ -27,9 +27,14 @@ class RestaurantsController < ApplicationController
 
 	def update
 		@restaurant = Restaurant.find(params[:id])
-		if @restaurant.update(restaurant_params)
-			redirect_to @restaurant
+		if current_owner.owns?(@restaurant)
+			if @restaurant.update(restaurant_params)
+				redirect_to @restaurant
+			else
+				render 'edit'
+			end
 		else
+			@restaurant.errors[:base] << "You should be the owner of the restaurant to edit"
 			render 'edit'
 		end
 	end
@@ -40,6 +45,8 @@ class RestaurantsController < ApplicationController
 
 		redirect_to restaurants_path
 	end
+
+	before_action :authenticate_owner!, only: [:create, :update, :destroy, :edit]
 
 	private
 

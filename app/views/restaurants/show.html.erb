@@ -9,6 +9,11 @@
     </div>
   </div>
   <div class="form-group">
+    <label class="col-sm-2 control-label">Owner's Name</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @restaurant.owner.name %></p>
+    </div>
+  </div>  <div class="form-group">
     <label class="col-sm-2 control-label">Description</label>
     <div class="col-sm-10">
       <p class="form-control-static"><%= @restaurant.description %></p>
@@ -42,6 +47,12 @@
     <label class="col-sm-2 control-label">Phone Number</label>
     <div class="col-sm-10">
       <p class="form-control-static"><%= @restaurant.phoneNumber %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Map</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= image_tag "http://maps.googleapis.com/maps/api/staticmap?key=#{ENV['GOOGLE_STATIC_MAPS_API_KEY']}&size=400x400&maptype=roadmap&markers=size:mid|color:red|#{@restaurant.street}, #{@restaurant.city}, #{@restaurant.state} #{@restaurant.zipCode}" %></p>
     </div>
   </div>
   <div class="form-group">
