@@ -27,6 +27,10 @@ class RestaurantsController < ApplicationController
 
 	def update
 		@restaurant = Restaurant.find(params[:id])
+
+		#puts "id on the request params is " + params[:id] + "\n"
+		#puts "found restaurant is " + @restaurant.name + " with owner " + @restaurant.owner.name + ", current owner is " + current_owner.name + "\n"
+		
 		if current_owner.owns?(@restaurant)
 			if @restaurant.update(restaurant_params)
 				redirect_to @restaurant

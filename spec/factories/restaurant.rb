@@ -10,6 +10,7 @@ FactoryGirl.define do
 		f.state { Faker::Address.state }
 		f.zipCode { Faker::Address.zip_code }
 		f.phoneNumber { Faker::PhoneNumber.phone_number }
+		f.owner# = current_owner
 	end 
 
 	factory :valid_restaurant, parent: :restaurant do |f| 

@@ -68,6 +68,4 @@ gem 'fog', '~> 1.3.1'
 
 gem 'devise'
 
-gem 'googlestaticmap'
-
 
