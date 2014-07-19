@@ -2,8 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require 'dotenv' if "#{Rails.env}" == "dev"
-Dotenv.load ".env.local", ".env.#{Rails.env}" if "#{Rails.env}" == "dev"
+if Rails.env.development?
+    require 'dotenv'
+    Dotenv.load ".env.local", ".env.#{Rails.env}" 
+end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
