@@ -68,4 +68,5 @@ gem 'fog', '~> 1.3.1'
 
 gem 'devise'
 
+gem 'rails_12factor', group: :production
 
