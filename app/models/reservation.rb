@@ -5,8 +5,14 @@ class Reservation < ActiveRecord::Base
 
 	belongs_to :restaurant, inverse_of: :reservations
 
+	after_save :notify_owner
+
 	def is_new?
 		new_record?
+	end
+
+	def notify_owner 
+		ReservationMailer.notify_owner_of_reservation(self).deliver
 	end
 
 end

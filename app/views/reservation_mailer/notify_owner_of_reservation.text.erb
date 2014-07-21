@@ -1,0 +1,8 @@
+<%= @reservation.restaurant.name %> | New Reservation
+------------------------------------------------------
+
+Email: <%= @reservation.email %>
+Requested Time: <%= @reservation.requested_datetime %>
+Message: <%= @reservation.message %>
+
+You can view all reservations for <%= @reservation.restaurant.name %> at <%= restaurant_url(@reservation.restaurant, host: '0.0.0.0:3000/') %>
