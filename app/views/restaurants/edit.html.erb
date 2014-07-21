@@ -10,61 +10,92 @@
       <% end %>
   </p>
 <% end %>
-<%= form_for :restaurant, url: restaurant_path(@restaurant), method: :patch,  html: {class: "form-horizontal", role: "form"} do |f| %>
+<%= form_for @restaurant, url: restaurant_path(@restaurant), method: :patch,  html: {class: "form-horizontal", role: "form"} do |f| %>
 
   <div class="form-group">
     <%= f.label :name, "Name", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :name, class:"form-control" %>
+      <%= f.text_field :name, class:"form-control", readonly:!current_owner %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :description, "Description", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_area :description, class:"form-control", size: "20x10" %>
+      <%= f.text_area :description, class:"form-control", size: "20x10", readonly:!current_owner %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :street, "Street", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :street, class:"form-control" %>
+      <%= f.text_field :street, class:"form-control", readonly:!current_owner %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :city, "City", class: "col-sm-2 control-label" %>
+    <%= f.label :city, "City", class: "col-sm-2 control-label", readonly:!current_owner %>
     <div class="col-sm-10">
-      <%= f.text_field :city, class:"form-control" %>
+      <%= f.text_field :city, class:"form-control", readonly:!current_owner %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :state, "State", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :state, class:"form-control" %>
+      <%= f.text_field :state, class:"form-control", readonly:!current_owner %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :zipCode, "Zip Code", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.number_field :zipCode, class:"form-control" %>
+      <%= f.number_field :zipCode, class:"form-control", readonly:!current_owner %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :phoneNumber, "Phone Number", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.phone_field :phoneNumber, class:"form-control", pattern:'\d{3}[\-]\d{3}[\-]\d{4}'  %>
+      <%= f.phone_field :phoneNumber, class:"form-control", pattern:'\d{3}[\-]\d{3}[\-]\d{4}', readonly:!current_owner  %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :picture, "Picture", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= image_tag @restaurant.picture_url(:thumb).to_s if @restaurant.picture? %></p>
-      <%= f.file_field :picture, class: "form-control"  %>
+      <%= f.file_field :picture, class: "form-control", readonly:!current_owner  %>
       <%= f.hidden_field :picture_cache %>
     </div>
   </div>
+  <p class="lead">Add/Update Reservations</p>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+      <table class="table table-hover table-striped table-condensed">
+        <tr>
+          <th>Email</th>
+          <th>Requested Time</th>
+          <th>Message</th>
+          <th><% if @restaurant.owner == current_owner %>Delete?<% end %></th>
+        </tr>
+
+        <%= f.fields_for :reservations do |r| %>
+            <% if @restaurant.owner == current_owner || r.object.is_new?  %>
+            <tr>
+              <td><%= r.email_field :email, class: "form-control"  %></td>
+              <td><%= r.datetime_field :requested_datetime, class: "form-control"  %></td>
+              <td>
+                <%= r.text_field :message, class: "form-control" %>
+              </td>
+              <td>
+                <% if @restaurant.owner == current_owner %>
+                  <%= r.check_box :_destroy %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
   <div class="form-group">
       <div class="col-sm-offset-2 col-sm-2">
-        <%= f.submit "Update Restaurant", class:"btn btn-default"%>
+        <%= f.submit "Save", class:"btn btn-default"%>
       </div>
       <div class="col-sm-8">
         <%= link_to 'Back to Restaurant List', restaurants_path, class: "btn btn-default" %>
