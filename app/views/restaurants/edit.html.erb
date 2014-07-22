@@ -77,7 +77,7 @@
             <% if @restaurant.owner == current_owner || r.object.is_new?  %>
             <tr>
               <td><%= r.email_field :email, class: "form-control"  %></td>
-              <td><%= r.datetime_field :requested_datetime, class: "form-control"  %></td>
+              <td><%= r.datetime_field :requested_datetime %></td>
               <td>
                 <%= r.text_field :message, class: "form-control" %>
               </td>
