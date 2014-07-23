@@ -20,33 +20,10 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">Street</label>
+    <label class="col-sm-2 control-label">Address</label>
     <div class="col-sm-10">
-      <p class="form-control-static"><%= @restaurant.street %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">City</label>
-    <div class="col-sm-10">
-      <p class="form-control-static"><%= @restaurant.city %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">State</label>
-    <div class="col-sm-10">
-      <p class="form-control-static"><%= @restaurant.state %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Zip Code</label>
-    <div class="col-sm-10">
-      <p class="form-control-static"><%= @restaurant.zipCode %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Phone Number</label>
-    <div class="col-sm-10">
-      <p class="form-control-static"><%= @restaurant.phoneNumber %></p>
+      <p class="form-control-static"><%= @restaurant.street %><br><%= @restaurant.city %>
+        <br><%= @restaurant.state %>&nbsp;<%= @restaurant.zipCode %><br><%= @restaurant.phoneNumber %></p>
     </div>
   </div>
   <div class="form-group">
@@ -64,6 +41,32 @@
       <p class="form-control-static"><%= image_tag @restaurant.picture_url(:thumb).to_s if @restaurant.picture? %></p>
     </div>
   </div>
+
+  <% if @restaurant.owner == current_owner %>
+    <p class="lead">Reservations</p>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <table class="table table-hover table-striped table-condensed">
+          <tr>
+            <th>Email</th>
+            <th>Requested Time</th>
+            <th>Message</th>
+            <th></th>
+          </tr>
+         
+          <% @restaurant.reservations.each do |r| %>
+            <tr>
+              <td><%= r.email %></td>
+              <td><%= r.requested_datetime %></td>
+              <td><%= r.message %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  <% end %>
+  
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-2">
       <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-default" %>

@@ -1,4 +1,4 @@
-# spec/factories/restaurant.rb 
+# spec/factories/restaurants.rb 
 require 'Faker'
 
 FactoryGirl.define do 
@@ -11,6 +11,11 @@ FactoryGirl.define do
 		f.zipCode { Faker::Address.zip_code }
 		f.phoneNumber { Faker::PhoneNumber.phone_number }
 		f.owner# = current_owner
+
+		after(:build) do |restaurant| 
+			restaurant.reservations << FactoryGirl.build(:reservation, restaurant: restaurant)
+		end
+
 	end 
 
 	factory :valid_restaurant, parent: :restaurant do |f| 
