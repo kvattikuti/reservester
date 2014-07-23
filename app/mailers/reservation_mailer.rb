@@ -6,6 +6,6 @@ class ReservationMailer < ActionMailer::Base
   	@reservation = reservation
 
   	mail(to: @restaurant.owner.email,
-  		 subject: @restaurant.name + ' | ' + 'New Reservation(s)')
+  		 subject: @restaurant.name + ' | ' + 'New Reservation')
   end
 end
