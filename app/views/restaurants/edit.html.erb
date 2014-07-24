@@ -55,6 +55,16 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :categories, "Categories", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <% @categories.each do |c| %>
+        <%= check_box_tag "restaurant[category_list][]", c.id, 
+          @restaurant.category_list && @restaurant.category_list.include?(c.id), id: dom_id(c) %>
+        <%= label_tag dom_id(c), c.name %>&nbsp;&nbsp;
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :picture, "Picture", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= image_tag @restaurant.picture_url(:thumb).to_s if @restaurant.picture? %></p>
@@ -77,7 +87,7 @@
             <% if @restaurant.owner == current_owner || r.object.is_new?  %>
             <tr>
               <td><%= r.email_field :email, class: "form-control"  %></td>
-              <td><%= r.datetime_field :requested_datetime %></td>
+              <td><%= r.datetime_field :requested_datetime, class: "form-control" %></td>
               <td>
                 <%= r.text_field :message, class: "form-control" %>
               </td>

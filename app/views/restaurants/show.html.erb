@@ -22,17 +22,27 @@
   <div class="form-group">
     <label class="col-sm-2 control-label">Address</label>
     <div class="col-sm-10">
-      <p class="form-control-static"><%= @restaurant.street %><br><%= @restaurant.city %>
-        <br><%= @restaurant.state %>&nbsp;<%= @restaurant.zipCode %><br><%= @restaurant.phoneNumber %></p>
+      <div class="form-control-static"><%= @restaurant.street %><br><%= @restaurant.city %>
+        <br><%= @restaurant.state %>&nbsp;<%= @restaurant.zipCode %><br><%= @restaurant.phoneNumber %></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Categories</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">
+        <% @restaurant.categories.each do |c| %>
+          <%= c.name %>&nbsp;&nbsp;
+        <% end %>
+      </p>
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">Map</label>
     <div class="col-sm-10">
-      <p class="form-control-static">
+      <div class="form-control-static">
         <%= link_to image_tag("http://maps.googleapis.com/maps/api/staticmap?key=#{ENV['GOOGLE_STATIC_MAPS_API_KEY']}&size=400x400&maptype=roadmap&markers=size:mid|color:red|#{@restaurant.street}, #{@restaurant.city}, #{@restaurant.state} #{@restaurant.zipCode}"), "http://maps.google.com?q=#{@restaurant.street}, #{@restaurant.city}, #{@restaurant.state} #{@restaurant.zipCode}"
         %>
-      </p>
+      </div>
     </div>
   </div>
   <div class="form-group">

@@ -13,4 +13,15 @@ class Restaurant < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 
 	accepts_nested_attributes_for :reservations, allow_destroy: true, reject_if: :all_blank
+
+	def category_list
+		categories.collect { |c| c.id }
+	end
+
+	def category_list= category_ids
+		categories.delete_all
+		category_ids.each do |id|
+			categories << Category.find(id)
+		end
+	end
 end

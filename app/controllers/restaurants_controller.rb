@@ -1,6 +1,8 @@
 class RestaurantsController < ApplicationController
 
 	def new
+		@categories = Category.all
+		@restaurant = Restaurant.new
 	end
 
 	def index
@@ -8,6 +10,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def create
+		print params
 		@restaurant = Restaurant.new(restaurant_params)
 		@restaurant.owner = current_owner
 		if @restaurant.save
@@ -22,6 +25,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def edit
+		@categories = Category.all
 	  	@restaurant = Restaurant.find(params[:id])
 	  	@restaurant.reservations.build
 	  	@restaurant
@@ -62,7 +66,8 @@ class RestaurantsController < ApplicationController
 		def restaurant_params
 			params.require(:restaurant).permit(:name, :description, :street, :city, :state, :zipCode, :phoneNumber, 
 				:picture, :picture_url, :picture_cache, 
-				reservations_attributes: [:id, :_destroy, :email, :requested_datetime, :message])
+				reservations_attributes: [:id, :_destroy, :email, :requested_datetime, :message], 
+				category_list: [])
 		end
 
 		def restaurant_params_anonymous_user

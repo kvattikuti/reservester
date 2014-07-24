@@ -5,6 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Category.all.each do |c| 
+	 c.destroy 
+end
 
 categories = Category.create([ { name: 'Afghan' }, { name: 'Brazilian' }, { name: 'Korean' }, { name: 'Japanese' }, { name: 'Indian' }, 
 		{ name: 'French' }, { name: 'Thai' }, { name: 'Chinese' }, { name: 'Vietnamese' }, { name: 'Italian' } ])
