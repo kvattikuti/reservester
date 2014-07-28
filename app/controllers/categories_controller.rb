@@ -1,6 +1,11 @@
 class CategoriesController < ApplicationController
   def index
-  	@categories = Category.all
+  	@all_categories = Category.all
+  	if params[:category_list]
+  		@categories = Category.find(params[:category_list])
+  	else
+  		@categories = @all_categories
+  	end
   end
 
   def show
