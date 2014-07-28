@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'category/index'
+
+  get 'category/show'
+
   devise_for :owners
   get 'welcome/index'
   get 'dashboard5', to: 'owners#dashboard'
@@ -10,7 +14,8 @@ Rails.application.routes.draw do
   root 'restaurants#index'
 
   resources :restaurants
-
+  resources :categories, only: [:index, :show]
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

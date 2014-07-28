@@ -1,0 +1,16 @@
+<p class="lead">Categories</p>
+<table class="table table-hover table-striped table-condensed">
+  <tr>
+	<th>Name</th>
+	<th># of Restaurants</th>
+	<th></th>
+  </tr>
+ 
+  <% @categories.each do |c| %>
+    <tr>
+		<td><%= link_to c.name, category_path(c) %></td>
+		<td><%= c.restaurants.count %></td>
+		<td></td>
+    </tr>
+  <% end %>
+</table>
