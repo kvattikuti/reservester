@@ -1,6 +1,7 @@
 <table class="table table-hover table-striped table-condensed">
   <tr>
 	<th>Name</th>
+	<th>Categories</th>
 	<th>Description</th>
 	<th>Street</th>
 	<th>City</th>
@@ -16,6 +17,13 @@
   <% @restaurants.each do |restaurant| %>
     <tr>
 		<td><%= restaurant.name %></td>
+
+		<td>
+			<% restaurant.categories.each do |c| %>
+				<%= link_to c.name, category_path(c) %>&nbsp;
+			<% end %>
+		</td>
+
 		<td><%= restaurant.description %></td>
 		<td><%= restaurant.street %></td>
 		<td><%= restaurant.city %></td>

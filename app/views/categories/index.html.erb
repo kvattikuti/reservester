@@ -1,0 +1,27 @@
+<p class="lead">Categories</p>
+
+<%= form_tag('/categories', method: :get) do %>
+	<% @all_categories.each do |c| %>
+		<%= check_box_tag "category_list[]", c.id, false, id: dom_id(c) %>
+		<%= label_tag dom_id(c), c.name %>&nbsp;&nbsp;
+	<% end %>
+	<%= submit_tag 'Search' %>
+<% end %>
+
+<p/>
+
+<table class="table table-hover table-striped table-condensed">
+  <tr>
+	<th>Name</th>
+	<th># of Restaurants</th>
+	<th></th>
+  </tr>
+ 
+  <% @categories.each do |c| %>
+    <tr>
+		<td><%= link_to c.name, category_path(c) %></td>
+		<td><%= c.restaurants.count %></td>
+		<td></td>
+    </tr>
+  <% end %>
+</table>

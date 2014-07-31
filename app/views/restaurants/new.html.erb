@@ -63,6 +63,16 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<%= f.label :categories, "Categories", class: "col-sm-2 control-label" %>
+		<div class="col-sm-10">
+			<% @categories.each do |c| %>
+				<%= check_box_tag "restaurant[category_list][]", c.id, 
+					@restaurant.category_list && @restaurant.category_list.include?(c.id), id: dom_id(c) %>
+				<%= label_tag dom_id(c), c.name %>&nbsp;&nbsp;
+			<% end %>
+		</div>
+	</div>
+	<div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-2">
 	    	<%= f.submit "Save Restaurant", class:"btn btn-default"%>
 	    	
@@ -71,5 +81,7 @@
 	    	<%= link_to 'Back to Restaurant List', restaurants_path, class: "btn btn-default" %>
 	    </div>
   	</div>
+
+
 <% end %>
 
